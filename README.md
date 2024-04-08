@@ -1,1 +1,0 @@
-This project pulls data from OpenDataPhilly's shooting victim database
