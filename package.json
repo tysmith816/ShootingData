@@ -1,7 +1,6 @@
 {
   "name": "shootingdataapiping",
   "version": "1.0.0",
-  "description": "",
   "main": "app.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -11,8 +10,9 @@
   "license": "ISC",
   "dependencies": {
     "express": "^4.19.2",
-    "node-fetch": "^3.3.2",
-    "pg": "^8.11.5"
+    "node-fetch": "^3.3.2"
   },
-  "type": "module"
+  "type": "module",
+  "devDependencies": {},
+  "description": ""
 }
