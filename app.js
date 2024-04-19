@@ -3,6 +3,10 @@ import fetch from 'node-fetch';
 
 const app = express()
 
+app.use(express.static('public'))
+
+app.get('/favicon.ico', (req, res) => res.status(204));
+
 //const fetching = require("./fetchjson");
 
 //import grabjson from './fetchjson.js';
@@ -22,6 +26,10 @@ app.get ('/', (req,res) => {
     });
 })
 */
+
+app.get('/', (req, res) => {
+    res.status(200).json({info: 'test'})
+})
 
 app.listen (3001, () => {    
     console.log('server start')
