@@ -3,10 +3,6 @@ import fetch from 'node-fetch';
 
 const app = express()
 
-app.use(express.static('public'))
-
-app.get('/favicon.ico', (req, res) => res.status(204));
-
 //const fetching = require("./fetchjson");
 
 //import grabjson from './fetchjson.js';
@@ -33,13 +29,17 @@ app.get('/', (req, res) => {
 
 app.listen (3001, () => {    
     console.log('server start')
+    /*
     let p = asyncRetrieve();
     p.then(function(result) {
         console.log(result);
     });
+    */
 })
 
+/*
 async function asyncRetrieve() {
     var data = await promiseRetrieve();
     return data;
 }
+*/
