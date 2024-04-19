@@ -6,7 +6,7 @@ const app = express()
 //const fetching = require("./fetchjson");
 
 //import grabjson from './fetchjson.js';
-//import promiseRetrieve from './fetchjson.js';
+import promiseRetrieve from './fetchjson.js';
 
 //app.get ('/', (req,res) => res.send('Hello World!'))
 
@@ -30,23 +30,6 @@ app.listen (3001, () => {
         console.log(result);
     });
 })
-
-const testGrab = () => fetch(url, settings)
-
-function promiseRetrieve(){
-    return new Promise((resolve) => {
-        testGrab()
-        .then(res => res.json())
-        .then((json) => {
-            var data = {};
-            data =  Object.values(json.rows).filter(it => it.date_ === "2024-04-03T00:00:00Z");
-            return data;
-        })
-        .then(data => {
-            resolve(data);
-        });
-    })
-}
 
 async function asyncRetrieve() {
     var data = await promiseRetrieve();
