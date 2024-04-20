@@ -1,14 +1,17 @@
-import express from 'express';
-import fetch from 'node-fetch';
+import express from 'express'
+import fetch from 'node-fetch'
+import cors from 'cors'
 
 const app = express()
+
+app.use(cors())
 
 //const fetching = require("./fetchjson");
 
 //import grabjson from './fetchjson.js';
 import promiseRetrieve from './fetchjson.js';
 
-//app.get ('/', (req,res) => res.send('Hello World!'))
+app.get ('/', (req,res) => res.send('Hello World!'))
 
 let url = "https://phl.carto.com/api/v2/sql?q=SELECT%20*%20FROM%20shootings";
 
@@ -23,7 +26,7 @@ app.get ('/', (req,res) => {
 })
 */
 
-app.get('/', (req, res) => {
+app.get('/info', (req, res) => {
     res.status(200).json({info: 'test'})
 })
 

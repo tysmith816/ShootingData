@@ -9,4 +9,28 @@
 <body>
     HTML BODY
 </body>
+<script>
+    console.log("1alskdjflasjkdflkajsdf")
+    const url = 'http://localhost:3001/info'
+    let settings = {method: 'GET'}
+    fetch(url, settings)
+        .then(res => res.json())
+        .then((json) => {
+            console.log(json)
+        })
+    /*
+    let p = getInfo()
+    p.then(function(result) {
+        console.log(result)
+    })
+    async function getInfo(){
+        const res = await fetch(url,
+        {
+            method: 'GET'
+        })
+        console.log(res)
+        return res
+    }
+    */
+</script>
 </html>
