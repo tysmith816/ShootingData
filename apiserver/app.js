@@ -2,30 +2,21 @@ import express from 'express'
 import fetch from 'node-fetch'
 import cors from 'cors'
 
-const app = express()
+import fetchjson from './fetchjson.js';
 
+const app = express()
 app.use(cors())
 
-import promiseRetrieve from './fetchjson.js';
-
-app.get ('/', (req,res) => res.send('Hello World!'))
-
-let url = "https://phl.carto.com/api/v2/sql?q=SELECT%20*%20FROM%20shootings";
-
-let settings = {method: "Get"};
-
-/*
 app.get ('/', (req,res) => {
-    let p = asyncRetrieve();
-    p.then(function(result) {
-        res.send(result);
-    });
+    fetchjson.grabRawJson()
+        .then(res => res.json())
+        .then((json) => {
+            res.send(JSON.stringify(json))
+        })
 })
-*/
 
 app.get('/info', (req, res) => {
-    //res.status(200).json({info: 'test'})
-    let p = asyncRetrieve();
+    let p = asyncGrabSpecificDate();
     p.then(function(result) {
         console.log(result)
         return result
@@ -37,15 +28,9 @@ app.get('/info', (req, res) => {
 
 app.listen (3001, () => {    
     console.log('server start')
-    /*
-    let p = asyncRetrieve();
-    p.then(function(result) {
-        console.log(result);
-    });
-    */
 })
 
-async function asyncRetrieve() {
-    var data = await promiseRetrieve();
-    return data;
+async function asyncGrabSpecificDate() {
+    var data = await fetchjson.grabSpecificDate()
+    return data
 }
