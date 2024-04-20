@@ -6,9 +6,6 @@ const app = express()
 
 app.use(cors())
 
-//const fetching = require("./fetchjson");
-
-//import grabjson from './fetchjson.js';
 import promiseRetrieve from './fetchjson.js';
 
 app.get ('/', (req,res) => res.send('Hello World!'))
@@ -27,7 +24,15 @@ app.get ('/', (req,res) => {
 */
 
 app.get('/info', (req, res) => {
-    res.status(200).json({info: 'test'})
+    //res.status(200).json({info: 'test'})
+    let p = asyncRetrieve();
+    p.then(function(result) {
+        console.log(result)
+        return result
+    })
+    .then(function(result) {
+        res.status(200).send(result)
+    })
 })
 
 app.listen (3001, () => {    
@@ -40,9 +45,7 @@ app.listen (3001, () => {
     */
 })
 
-/*
 async function asyncRetrieve() {
     var data = await promiseRetrieve();
     return data;
 }
-*/
