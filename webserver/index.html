@@ -7,7 +7,9 @@
     <title>Document</title>
 </head>
 <body>
-    HTML BODY
+    <h1>Data:</h1>
+    <ul></ul>
+    End of data
 </body>
 <script>
     console.log("1alskdjflasjkdflkajsdf")
@@ -17,20 +19,11 @@
         .then(res => res.json())
         .then((json) => {
             console.log(json)
+            json.forEach(entry => {
+                const markup = `<li>${entry.location}</li>`
+
+                document.querySelector('ul').insertAdjacentHTML('beforeend', markup)
+            })
         })
-    /*
-    let p = getInfo()
-    p.then(function(result) {
-        console.log(result)
-    })
-    async function getInfo(){
-        const res = await fetch(url,
-        {
-            method: 'GET'
-        })
-        console.log(res)
-        return res
-    }
-    */
 </script>
 </html>
