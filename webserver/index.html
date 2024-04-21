@@ -8,7 +8,7 @@
 </head>
 <body>
     <label for="date-input">Select a date:</label>
-    <input type="date" id="date-input" value="2024-04-21" min="2015-01-01" max="2024-12-31" />
+    <input type="date" id="date-input" value="2024-04-03" min="2015-01-01" max="2024-12-31" />
 
     <h1 id="date-header">Data for the date 2024-04-03T00:00:00Z:</h1>
     <ul></ul>
@@ -16,9 +16,9 @@
 </body>
 <script>
     console.log("1alskdjflasjkdflkajsdf")
-    const url = 'http://localhost:3001/info'
+    const url = 'http://localhost:3001/info/'
     let settings = {method: 'GET'}
-    fetch(url, settings)
+    fetch(url + '2024-04-03T00:00:00Z', settings)
         .then(res => res.json())
         .then((json) => {
             console.log(json)
@@ -32,6 +32,16 @@
         console.log(input + "T00:00:00Z")
         var testStr = " " + input + "T00:00:00Z"
         document.querySelector('#date-header').innerHTML = "Data for the date " + testStr + ":"
+        fetch(url + input + 'T00:00:00Z', settings)
+            .then(res => res.json())
+            .then((json) => {
+                console.log(json)
+                document.querySelector('ul').innerHTML = ""
+                json.forEach(entry => {
+                    const markup = `<li>${entry.location}</li>`
+                    document.querySelector('ul').insertAdjacentHTML('beforeend', markup)
+                })
+            })
     })
 </script>
 </html>

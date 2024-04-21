@@ -15,10 +15,13 @@ app.get ('/', (req,res) => {
         })
 })
 
-app.get('/info', (req, res) => {
-    let p = asyncGrabSpecificDate();
+app.get('/info/:dynamic', (req, res) => {
+    const { dynamic } = req.params
+    //console.log(dynamic)
+
+    let p = asyncGrabSpecificDate(dynamic);
     p.then(function(result) {
-        console.log(result)
+        //console.log(result)
         return result
     })
     .then(function(result) {
@@ -30,7 +33,7 @@ app.listen (3001, () => {
     console.log('server start')
 })
 
-async function asyncGrabSpecificDate() {
-    var data = await fetchjson.grabSpecificDate()
+async function asyncGrabSpecificDate(date) {
+    var data = await fetchjson.grabSpecificDate(date)
     return data
 }
