@@ -7,12 +7,12 @@
     <title>Document</title>
 </head>
 <body>
-    <h1>Data:</h1>
-    <ul></ul>
-    End of data
+    <label for="date-input">Select a date:</label>
+    <input type="date" id="date-input" value="2024-04-21" min="2015-01-01" max="2024-12-31" />
 
-    <label for="date-input">Start date:</label>
-    <input type="date" id="date-input" name="trip-start" value="2024-04-21" min="2015-01-01" max="2024-12-31" />
+    <h1 id="date-header">Data for the date 2024-04-03T00:00:00Z:</h1>
+    <ul></ul>
+    <h1>End of data</h1>    
 </body>
 <script>
     console.log("1alskdjflasjkdflkajsdf")
@@ -30,6 +30,8 @@
     document.getElementById("date-input").addEventListener("change", function() {
         var input = this.value
         console.log(input + "T00:00:00Z")
+        var testStr = " " + input + "T00:00:00Z"
+        document.querySelector('#date-header').innerHTML = "Data for the date " + testStr + ":"
     })
 </script>
 </html>
