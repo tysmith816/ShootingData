@@ -5,6 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
     <label for="date-input">Select a date:</label>
@@ -19,61 +20,59 @@
     const url = 'http://localhost:3001/info/'
     let settings = {method: 'GET'}
 
+    var tableHeader = document.createElement("thead");
+    tbl.appendChild(tableHeader);
+    var tableHeaderRow = document.createElement("tr");
+    tableHeader.appendChild(tableHeaderRow);
+
+    var headers = ['Location', 'Age', 'Gender', 'Fatal']
+    for(i=0;i<headers.length;i++){
+            var tableHeader = document.createElement("th");
+            tableHeaderRow.appendChild(tableHeader);
+            tableHeader.innerHTML = headers[i]
+    }
+
     const updateTable = (selectedDate) => {
-        tbl.innerHTML = ""
-
-        const tr = tbl.insertRow();
-
-        td = tr.insertCell()
-        td.appendChild(document.createTextNode(`Location`))
-        td.style.border = '1px solid black'
-
-        td = tr.insertCell()
-        td.appendChild(document.createTextNode(`Age`))
-        td.style.border = '1px solid black'
-
-        td = tr.insertCell()
-        td.appendChild(document.createTextNode(`Gender`))
-        td.style.border = '1px solid black'
-
-        td = tr.insertCell()
-        td.appendChild(document.createTextNode(`Fatal`))
-        td.style.border = '1px solid black'
-
-        tbl.style.width = '100px';
-        tbl.style.border = '1px solid black';
-
         document.querySelector('#date-header').innerHTML = "Data for the date " + selectedDate + "T00:00:00Z:"
+
+        var bodyRef = tbl.getElementsByTagName('tbody')[0]
+        if (typeof bodyRef !== 'undefined') {
+            bodyRef.innerHTML = ""
+        }
 
         fetch(url + selectedDate + 'T00:00:00Z', settings)
             .then(res => res.json())
             .then((json) => {
-                //console.log(json)
+                var tblBody = document.createElement("tbody")
+                tbl.appendChild(tblBody)
+
                 json.forEach(entry => {
-                    const tr = tbl.insertRow();
-        
-                    td = tr.insertCell()
-                    td.appendChild(document.createTextNode(`${entry.location}`))
-                    td.style.border = '1px solid black'
+                    var tblRow=document.createElement("tr")
+                    tblBody.appendChild(tblRow)
 
-                    td = tr.insertCell()
-                    td.appendChild(document.createTextNode(`${entry.age}`))
-                    td.style.border = '1px solid black'
-
-                    td = tr.insertCell()
-                    td.appendChild(document.createTextNode(`${entry.sex}`))
-                    td.style.border = '1px solid black'
-
-                    td = tr.insertCell()
-                    if (entry.fatal == 1)
-                    {
-                        td.appendChild(document.createTextNode(`Yes`))
+                    var relevantFields = {
+                        location: entry.location,
+                        age: entry.age,
+                        sex: entry.sex,
+                        fatal: entry.fatal
                     }
-                    else
-                    {
-                        td.appendChild(document.createTextNode(`No`))
+
+                    for (const [key, val] of Object.entries(relevantFields)) {
+                        var cell = document.createElement("td")
+                        tblRow.appendChild(cell)
+                        if (key == "fatal") {
+                            if (val == 0) {
+                                cell.innerHTML = "No"
+                            }
+                            else {
+                                cell.innerHTML = "Yes"
+                            }
+                        }
+                        else {
+                            cell.innerHTML = val
+                        }
+                        
                     }
-                    td.style.border = '1px solid black'
                 })
             })
     }

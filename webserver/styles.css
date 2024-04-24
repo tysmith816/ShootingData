@@ -1,0 +1,12 @@
+tr:hover {
+    color: #00687a
+}
+
+td:first-of-type, th:first-of-type {
+    width: 400px;
+}
+
+th, td {
+    width: 75px;
+    border: 1px solid black;
+}
