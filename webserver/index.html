@@ -12,7 +12,7 @@
     <input type="date" id="date-input" value="2024-04-03" min="2015-01-01" max="2024-12-31" />
 
     <h1 id="date-header">Data for the date 2024-04-03T00:00:00Z:</h1>
-    <table></table>    
+    <table class="data-table"></table>    
 </body>
 <script>
     const body = document.body
@@ -32,21 +32,30 @@
             tableHeader.innerHTML = headers[i]
     }
 
+    var tblBody = document.createElement("tbody")
+    tbl.appendChild(tblBody)
+
     const updateTable = (selectedDate) => {
         document.querySelector('#date-header').innerHTML = "Data for the date " + selectedDate + "T00:00:00Z:"
 
-        var bodyRef = tbl.getElementsByTagName('tbody')[0]
-        if (typeof bodyRef !== 'undefined') {
-            bodyRef.innerHTML = ""
-        }
+        tblBody.innerHTML = ""
+        var tblRow=document.createElement("tr")
+        tblBody.appendChild(tblRow)
+        var cell = document.createElement("td")
+        tblRow.appendChild(cell)
+        cell.innerHTML = "DATA LOADING..."
 
         fetch(url + selectedDate + 'T00:00:00Z', settings)
             .then(res => res.json())
             .then((json) => {
-                var tblBody = document.createElement("tbody")
-                tbl.appendChild(tblBody)
+                var rowCount = 0
+
+                tblBody.innerHTML = ""
 
                 json.forEach(entry => {
+                    rowCount = rowCount + 1
+                    console.log(rowCount)
+
                     var tblRow=document.createElement("tr")
                     tblBody.appendChild(tblRow)
 
@@ -74,7 +83,16 @@
                         
                     }
                 })
-            })
+                
+                if (rowCount == 0)
+                {
+                    var tblRow=document.createElement("tr")
+                    tblBody.appendChild(tblRow)
+                    var cell = document.createElement("td")
+                    tblRow.appendChild(cell)
+                    cell.innerHTML = "NO DATA FOR THIS DATE"
+                }
+            })        
     }
 
     updateTable("2024-04-03")
