@@ -25,7 +25,7 @@
     var tableHeaderRow = document.createElement("tr");
     tableHeader.appendChild(tableHeaderRow);
 
-    var headers = ['Location', 'Age', 'Gender', 'Fatal']
+    var headers = ['LOCATION', 'AGE', 'GENDER', 'FATAL']
     for(i=0;i<headers.length;i++){
             var tableHeader = document.createElement("th");
             tableHeaderRow.appendChild(tableHeader);
@@ -44,6 +44,7 @@
         var cell = document.createElement("td")
         tblRow.appendChild(cell)
         cell.innerHTML = "DATA LOADING..."
+        cell.colSpan = "4"
 
         fetch(url + selectedDate + 'T00:00:00Z', settings)
             .then(res => res.json())
@@ -54,7 +55,6 @@
 
                 json.forEach(entry => {
                     rowCount = rowCount + 1
-                    console.log(rowCount)
 
                     var tblRow=document.createElement("tr")
                     tblBody.appendChild(tblRow)
@@ -80,7 +80,6 @@
                         else {
                             cell.innerHTML = val
                         }
-                        
                     }
                 })
                 
