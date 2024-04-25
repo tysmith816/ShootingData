@@ -8,11 +8,30 @@
     <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
-    <label for="date-input">Select a date:</label>
-    <input type="date" id="date-input" value="2024-04-03" min="2015-01-01" max="2024-12-31" />
-
-    <h1 id="date-header">Data for the date 2024-04-03T00:00:00Z:</h1>
-    <table class="data-table"></table>    
+    <label for="date-input">Select another date: <br></label>
+    <input type="date" id="date-input" value="2024-04-03" min="2015-01-01" max="2024-12-31"/>
+    <br>
+    <br>
+    <p class="custom-header1" id="date-header">Publicly available shooting victim data for 2024-04-03:</p>
+    <table class="data-table"></table>
+    <p>Data obtained from OpenDataPhilly's Shooting Victims API.</p>
+    <p>This page can present data from 2015-01-01 through 2024-12-31. See <a href="https://opendataphilly.org/datasets/shooting-victims/">OpenDataPhilly</a> for more information.</p>
+    <br>
+    <br>
+    <p class="custom-header1">Information about the creation of this page:</p>
+    <p class="custom-header2">Back end:</p>
+    <p>The back end of this page is a node express server that routes get commands from the front end.</p>
+    <p>The get request includes a requested date. A fetch command is executed to retrieve a JSON table</p>
+    <p>from OpenDataPhilly's public API (the URL includes a SQL command). The retrieved data is filtered</p>
+    <p>for the requested date and then returned to the front end in response to the request.</p>
+    <br>
+    <p class="custom-header2">Front end:</p>
+    <p>The front end of this page is a node HTTP server that serves an index.html page formatted by a css</p>
+    <p>stylesheet. The HTML page has a date input field which triggers a request to the back end when the</p>
+    <p>selected date changes. The response from the back end is then filtered and formatted into a table.</p>
+    <p>Description</p>
+    <p>Description</p>
+    <p>Description</p>
 </body>
 <script>
     const body = document.body
@@ -36,7 +55,7 @@
     tbl.appendChild(tblBody)
 
     const updateTable = (selectedDate) => {
-        document.querySelector('#date-header').innerHTML = "Data for the date " + selectedDate + "T00:00:00Z:"
+        document.querySelector('#date-header').innerHTML = "Publicly available shooting victim data for  " + selectedDate + ":"
 
         tblBody.innerHTML = ""
         var tblRow=document.createElement("tr")
@@ -90,6 +109,7 @@
                     var cell = document.createElement("td")
                     tblRow.appendChild(cell)
                     cell.innerHTML = "NO DATA FOR THIS DATE"
+                    cell.colSpan = "4"
                 }
             })        
     }

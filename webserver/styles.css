@@ -1,6 +1,6 @@
 .data-table tbody tr:hover {
     font-weight: bold;
-    color: #009879;
+    color: #007a98;
 }
 
 .data-table td:first-of-type, .data-table th:first-of-type {
@@ -9,17 +9,16 @@
 
 .data-table {
     border-spacing: 0;
-    margin: 25px 0;
     font-size: 0.9em;
     font-family: sans-serif;
-    min-width: 400px;
     box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
-    border: 2px solid #009879;
+    border: 2px solid #007a98;
     border-radius: 5px;
+    margin: 10px 25px 40px 0px;
 }
 
 .data-table thead tr {
-    background-color: #009879;
+    background-color: #007a98;
     color: #ffffff;
     text-align: left;
 }
@@ -29,21 +28,33 @@
     padding: 12px 15px;
 }
 
-.data-table tbody tr {
-    border-bottom: 1px solid #dddddd;
-}
-
 .data-table tbody tr:nth-of-type(even) {
     background-color: #f3f3f3;
 }
 
-/*
-.data-table tbody tr:last-of-type {
-    border-bottom: 2px solid #009879;
+.data-table tbody tr:nth-of-type(odd) {
+    background-color: #ffffff;
 }
-*/
 
-.data-table tbody tr.active-row {
+body {
+    font-family: sans-serif;
+    background-color: rgb(168, 187, 194);
+    margin: 10px 25px;
+}
+
+p {
+    font-size: 85%;
+    line-height: 0.5;
+}
+
+.custom-header1 {
+    font-size: 150%;
     font-weight: bold;
-    color: #009879;
+    line-height: 0.1;
+}
+
+.custom-header2 {
+    font-size: 125%;
+    font-weight: bold;
+    line-height: 0.5;
 }
