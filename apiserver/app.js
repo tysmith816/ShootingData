@@ -17,11 +17,9 @@ app.get ('/', (req,res) => {
 
 app.get('/info/:dynamic', (req, res) => {
     const { dynamic } = req.params
-    //console.log(dynamic)
 
     let p = asyncGrabSpecificDate(dynamic);
     p.then(function(result) {
-        //console.log(result)
         return result
     })
     .then(function(result) {

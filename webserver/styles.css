@@ -14,7 +14,6 @@
     box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
     border: 2px solid #007a98;
     border-radius: 5px;
-    margin: 10px 25px 40px 0px;
 }
 
 .data-table thead tr {
@@ -29,32 +28,80 @@
 }
 
 .data-table tbody tr:nth-of-type(even) {
-    background-color: #f3f3f3;
+    background-color: rgb(227, 236, 240);
 }
 
 .data-table tbody tr:nth-of-type(odd) {
-    background-color: #ffffff;
+    background-color: rgb(255, 255, 255);
 }
 
 body {
     font-family: sans-serif;
-    background-color: rgb(168, 187, 194);
-    margin: 10px 25px;
+    background-color: rgb(202, 223, 231);
 }
 
 p {
     font-size: 85%;
-    line-height: 0.5;
+    line-height: 1.3;
+    margin: 5px 0 5px 0;
 }
 
 .custom-header1 {
     font-size: 150%;
     font-weight: bold;
-    line-height: 0.1;
+    line-height: 1;
+    margin: 25px 0 10px 0;
 }
 
 .custom-header2 {
-    font-size: 125%;
+    font-size: 105%;
     font-weight: bold;
-    line-height: 0.5;
+    line-height: 1;
+    margin: 0;
+    margin: 10px 0 5px 0;
+}
+
+.wrapperDiv {
+    width: 700px;
+    border-radius: 10px;
+    overflow: auto;
+    margin: 25px;
+    background-color: rgb(168, 187, 194);
+    border: 2px solid #007a98;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
+}
+
+.inputWrapperDiv {
+    width: fit-content;
+    border-radius: 5px;
+    margin: 25px;
+    background-color: rgb(195, 214, 221);
+    border: 2px solid #007a98;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
+}
+
+.inputDiv {
+    margin: 5px 10px 10px 10px;
+}
+
+.dataDiv {
+    margin: 25px;
+}
+
+.informationDiv {
+    margin: 25px;
+}
+
+.footnote {
+    font-size: 60%;
+    margin: 15px 0 0 0;
+}
+
+#date-input {
+    background-color: rgb(227, 236, 240);
+}
+
+label {
+    font-weight: bold;
+    line-height: 1.5;
 }
